@@ -1,0 +1,191 @@
+<style type="text/css">
+    .list-group-item:hover {
+        color: #337ab7;
+        text-shadow: 0 0 1em #337ab7;
+        cursor: pointer;
+    }
+
+    .footer-td-top {
+        border-top: 1px solid #222222;
+        padding-top: 10px;
+        font-size: 1.2rem;
+    }
+
+    .footer-td-sub {
+        padding-top: 10px;
+        font-size: 1.2rem;
+    }
+
+    .footer-td-tot {
+        border-top: 2px solid #222222;
+        padding-top: 10px;
+        font-size: 2rem;
+    }
+</style>
+<div class="row">
+    <main role="main" class="ml-sm-auto col-12">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                <li class="breadcrumb-item active cursor" aria-current="page" ui-sref="dashboard">Admin</li>
+                <li class="breadcrumb-item active cursor" aria-current="page" ui-sref="turmas">Turmas</li>
+                <li class="breadcrumb-item" aria-current="page">Turma</li>
+            </ol>
+        </nav>
+        <div class="container">
+            <form class="content" id="mainForm" name="mainForm" ng-submit="onFormSubmit()">
+                <div class="row">
+                    <div class="col-3 title-id text-left ">
+                    </div>
+                    <div class="col-9">
+                        <div class="float-right ml-3" ng-show="progressCircularShow"><img src="./images/load_40px.gif"
+                                                                                          height="37" /></div>
+                        <a ui-sref="turmas" class="btn btn-success btn-lg float-right ml-3"
+                           tooltip-placement="bottom-right" uib-tooltip="Retorne as Turmas"><i
+                                class="fas fa-undo"></i></a>
+                        <button type="submit" class="btn btn-warning btn-lg float-right ml-3">Abrir a Turma</button>
+                        <a href="javascript:void(0)" ng-click="novo()" class="btn btn-success btn-lg float-right"
+                           tooltip-placement="bottom-right" uib-tooltip="Faça uma Nova Turma"><i
+                                class="fas fa-shopping-basket"></i></i></a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="card">
+                        <div class="card-header card-header-info">
+                            <h4 class="card-title">Turma</h4>
+                            <p class="card-category">Registre sua turma aqui</p>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-2 col-12 title-id">
+                                    Nº {{turma.codigo}}
+                                </div>
+                                <div class="col-md-5 col-12">
+                                    <div class="form-label-group">
+                                        <input type="text" id="inputFantasia" class="form-control"
+                                               placeholder="" ng-model="turma.nomeTurma" required />
+                                        <label for="inputFantasia">Nome da Turma</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-5 col-12">
+                                    <div class="padding-select-form">
+                                        <select class="custom-select " ng-model="turma.codigoProfessor">
+                                            <option value="" selected>Professores</option>
+                                            <option ng-repeat="item in professores" ng-value="item.id">
+                                                {{item.nome}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 col-12">
+                                    <div class="form-label-group">
+                                        <input type="text" id="inputFantasia1" class="form-control"
+                                               placeholder="" ng-model="turma.maximoAlunos" required />
+                                        <label for="inputFantasia1">Qtde de Alunos</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-12 title-id text-right">
+                                    {{turma.status}}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-warning d-none d-md-block float-right"
+                                            ng-if="turma.status == 1">Abrir Turma</button>
+                                    <button type="submit" class="btn btn-warning btn-block float-left btn-lg d-lg-none"
+                                            ng-if="turma.status == 1">Abrir Turma</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="row">
+                <div class="card">
+                    <div class="card-header card-header-info">
+                        <h4 class="card-title">Alunos</h4>
+                        <p class="card-category">Adicione alunos nas turmas</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-2 col-12">
+                                <div class="form-label-group">
+                                    <input type="text" id="inputName" class="form-control" placeholder="Aluno"
+                                           ng-model="aluno.id" my-enter="pesquisarAluno()" />
+                                    <label for="inputName">ID Aluno</label>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-12 title-id">
+                                {{aluno.nome}}
+                            </div>
+                            <div class="col-md-4 col-12 text-right">
+                                <button type="button" ng-click="limparItem()" class="btn btn-danger">Limpar
+                                    Item</button>
+                                <button type="button" ng-click="adicionaritem()" class="btn btn-success">Add
+                                    Item</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body table-full-width table-responsive">
+                        <table class="table table-hover table-striped">
+                            <thead>
+                            <th width="60%">Código</th>
+                            <th width="15%">Aluno</th>
+                            <th width="10%" class="text-center">Ações</th>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="item in turma.alunos">
+                                <td>{{item.id}}</td>
+                                <td>{{item.nome}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+
+<script type="text/ng-template" id="ProductsTab.html">
+    <div class="modal-header">
+        <h3 class="modal-title" id="modal-title">Pesquisar Produtos</h3>
+    </div>
+    <div class="modal-body" id="modal-body">
+        <div class="row">
+            <div class="col-md-4 col-12"></div>
+            <div class="col-md-8 col-12">
+                <div class="form-label-group">
+                    <input type="text" id="txtSearch" class="form-control" ng-model="searchText" autocomplete="off" placeholder="Nome" autofocus />
+                    <label for="txtSearch">Informe o nome da produto</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-hover table-striped" style="width:99%">
+                    <thead>
+                    <th width="70%">Nome</th>
+                    <th width="30%">Valor</th>
+                    </thead>
+                    <tbody>
+                    <tr dir-paginate="produto in tamanhoFiltrado  = (produtos | filter:{nome:searchText} | itemsPerPage:40)">
+                        <td href="javascript:void(0)" ng-click="selecionaItem(produto)" class="cursor">{{produto.nome}}</td>
+                        <td>{{produto.valor | formatarMoeda}}</td>
+                    </tr>
+                    <tr class="animate-repeat" ng-if="tamanhoFiltrado.length === 0">
+                        <td colspan="3" style="text-align:center;">Nenhum produto foi encontrado.</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    </div>

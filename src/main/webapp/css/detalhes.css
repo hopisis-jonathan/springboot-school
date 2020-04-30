@@ -1,0 +1,107 @@
+.bola {
+    border-radius: 50%;
+    display: inline-block;
+    height: 10px;
+    width: 10px;
+	line-height:0px;
+	size:0px;
+    border: 1px solid #787878;
+    background-color: #9E9E9E;
+}
+
+.bolaRegistered {
+    border-radius: 50%;
+    display: inline-block;
+    height: 10px;
+    width: 10px;
+	line-height:0px;
+	size:0px;
+    border: 1px solid #000;
+    background-color: #93B016;
+	cursor: pointer;
+}
+
+.bolaSelected {
+    border-radius: 50%;
+    display: inline-block;
+    height: 13px;
+    width: 13px;
+	line-height:0px;
+	size:0px;
+    border: 2px solid #787878;
+    background-color: #FFFFFF;
+}
+
+md-tooltip .md-content {
+    height: auto;
+}
+
+.hey{ size:8px; min-width:300px;}
+
+.md-alinhamento-rod{top:8px;left:10px;bottom:auto;right:auto;position:relative}
+.md-alinhamento-list{top:0px;rigth:10px;bottom:8px;left:auto;position:relative}
+
+.links{ color:#494949; text-decoration:none;}
+.links:hover{ color:#494949; text-decoration:underline; }
+.linhaSelecionada{ background-color:#D4EAF9;}
+
+.linksEdicao{ color:#494949; background-color:#E8C61B; text-decoration:none;}
+.linksEdicao:hover{ color:#494949; background-color:#C89215; text-decoration:none;}
+
+.linksLiberado{ color:#494949; background-color:#9BC80A; text-decoration:none;}
+.linksLiberado:hover{ color:#494949; background-color:#788D29; text-decoration:none;}
+
+.linksPqAzul{ font-size:10px; color:#007ECC; text-decoration:none;}
+.linksPqAzul:hover{ font-size:10px;color:#007ECC; text-decoration:underline; }
+
+
+.md-dense h2 { margin:0px; font-size:16px; color:#000000}
+.md-dense h4 { color:#9F9F9F;}
+
+.tituloXS{color:#545454; font-size:18px; font-weight:600; margin:0px 5px; text-align:left;}
+.subtituloXS{color:#B4B4B4; font-size:15px; font-weight:600; margin:0px 5px; text-align:left;}
+.textoXS{color:#B4B4B4; font-size:12px; font-weight:normal; margin:0px 5px; text-align:justify;}
+.linksXS{color:#007ECC; font-size:15px; font-weight:normal; margin:5px; text-align:right;}
+a.linkXS{ font-size:15px; color:#007ECC; text-decoration:none;}
+a.linkXS:hover{ font-size:15px;color:#007ECC; text-decoration:underline; }
+a.linkXS:active{ font-size:15px;color:#007ECC; text-decoration:underline; }
+a.linkGlyphicon{ font-size:25px; color:#007ECC; text-decoration:none; margin-right:10px; margin-right:10px;}
+a.linkGlyphicon:active{ font-size:25px; color:#007ECC; text-decoration:none; margin-right:10px; margin-right:10px;}
+
+.link-material{ color:#494949; font-size:12px; text-decoration:none;}
+.link-material:hover{ color:#007ECC; font-size:12px; text-decoration:none; }
+.link-material:active{ color:#007ECC; font-size:12px; text-decoration:none; }
+
+div.box {border-radius:10px; background-color:#F6F6F6; border:1px solid #E0E0E0; box-shadow: 1px 1px 15px #E0E0E0; padding:10px;}
+p.image-box {text-align:center; margin:0px; margin-bottom:5px;}
+p.text-box {text-align:left; margin:0px; margin-bottom:1px; font-size: 12px; line-height:15px;}
+p.button-box {text-align:right; margin:0px; margin-top:10px;}
+a.link-box {color:#737373; text-decoration:none; font-size:20px;}
+a.link-box:hover {color:#79B600; text-decoration:none; font-size:20px;}
+
+a.link-toolbar {color:#FFFFFF; text-decoration:none; font-size:30px;}
+a.link-toolbar:hover {color:#000000; text-decoration:none; font-size:30px;}
+.box h3 {font-size:18px;}
+
+.box.grey { background-color:#999; border:1px solid #666; color:#000;  }
+.box.green { background-color:#8EBB00; border:1px solid #6C8600; color:#FFFFFF;  }
+.box.blue { background-color:#0081EB; border:1px solid #005497; color:#FFFFFF;  }
+.box.purple { background-color:#AB75D4; border:1px solid #4F0FA4; color:#FFFFFF;  }
+.box.orange { background-color:#E5C456; border:1px solid #D2A50F; color:#000000;  }
+
+.box.respondido { background-color:#FFF5AA; border:1px solid #B6A000; color:#000000  }
+.material-icons.respondido { color:#F3A311}
+.box.cursor { cursor:pointer }
+
+.box-popup {width:380px; margin-top:20px; margin-bottom:5px; padding:7px}
+.countdown {margin:0px; text-align:right; font-family:Roboto,Helvetica Neue,sans-serif; line-height:15px; vertical-align:middle; font-size:10px; color:#666; font-weight:bold; }
+.peq { padding:0px; margin:0px; font-size:11px; }
+.noSpaces { padding:0px; margin:0px; height:30px;}
+
+
+@media screen and (max-width: 380px) {
+div.box {border-radius:10px; background-color:#F6F6F6; border:1px solid #E0E0E0; box-shadow: 1px 1px 15px #E0E0E0; padding:10px;}
+
+}
+
+.fblack { font-family: "Roboto"; font-weight: 900;}

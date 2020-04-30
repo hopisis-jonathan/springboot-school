@@ -1,0 +1,113 @@
+<style>
+    .containerImg {
+        position: relative;
+        width: 100%;
+    }
+
+    .image {
+        opacity: 1;
+        display: block;
+        width: 100%;
+        height: auto;
+        transition: .5s ease;
+        backface-visibility: hidden;
+    }
+
+    .middle {
+        transition: .5s ease;
+        opacity: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        text-align: center;
+    }
+
+    .containerImg:hover .image {
+        opacity: 0.3;
+    }
+
+    .containerImg:hover .middle {
+        opacity: 1;
+    }
+
+    .text {
+        background-color: #4CAF50;
+        color: white;
+        font-size: 16px;
+        padding: 16px 32px;
+    }
+</style>
+<div class="row">
+    <main role="main" class="ml-sm-auto col-12">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                <li class="breadcrumb-item active cursor" aria-current="page" ui-sref="dashboard">Admin</li>
+                <li class="breadcrumb-item active cursor" aria-current="page" ui-sref="alunos">Alunos</li>
+                <li class="breadcrumb-item" aria-current="page">Aluno</li>
+            </ol>
+        </nav>
+        <form class="content" id="mainForm" name="mainForm" ng-submit="onFormSubmitAluno()">
+            <div class="container">
+                <div class="row">
+                    <div class="col-3 title-id text-left ">
+                    </div>
+                    <div class="col-9">
+                        <div class="float-right ml-3" ng-show="progressCircularShow"><img src="./images/load_40px.gif"
+                                height="37" /></div>
+                        <a ui-sref="alunos" class="btn btn-success btn-lg float-right ml-3"
+                            tooltip-placement="bottom-right" uib-tooltip="Retorne a listagem"><i
+                                class="fas fa-undo"></i></a>
+                        <button type="submit" class="btn btn-info btn-lg float-right ml-3">Salvar</button>
+                        <a href="javascript:void(0)" ng-click="novo()" class="btn btn-success btn-lg float-right"
+                            tooltip-placement="bottom-right" uib-tooltip="Cadastre um Novo Produto"><i
+                                class="fas fa-dolly-flatbed"></i></a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="card">
+                        <div class="card-header card-header-info">
+                            <h4 class="card-title">Dados do Aluno</h4>
+                            <p class="card-category"></p>
+                        </div>
+                        <div class="card-body">
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-md-1 col-12 title-id">
+                                        ID #{{aluno.id}}
+                                    </div>
+                                    <div class="col-md-5 col-12">
+                                        <div class="form-label-group">
+                                            <input type="text" id="inputCPF" class="form-control"
+                                                   placeholder="" ng-model="aluno.cpf" required />
+                                            <label for="inputCPF">CPF do Aluno</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-label-group">
+                                            <input type="text" id="inputFantasia" class="form-control"
+                                                placeholder="" ng-model="aluno.nome" required />
+                                            <label for="inputFantasia">Nome do Aluno</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 text-right">
+                        <div class="float-right ml-3" ng-show="progressCircularShow"><img src="./images/load_40px.gif"
+                                height="37" /></div>
+                        <button type="submit"
+                            class="btn btn-info btn-fill btn-lg float-right d-none d-md-block  ml-3">Salvar</button>
+                        <button type="submit" class="btn btn-info btn-block btn-lg d-lg-none">Salvar</button>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </main>
+</div>

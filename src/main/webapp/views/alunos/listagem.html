@@ -1,0 +1,99 @@
+<style>
+.pagination-controller {
+  border: 1px solid #ccf;
+  padding: 5px;
+  margin: 3px;
+}
+
+.pagination{display:inline-block; margin:auto; border-radius:4px }
+.pagination>li{display:inline}
+.pagination>li>a,.pagination>li>span{position:relative;float:left;padding:6px 12px;line-height:1.42857143;text-decoration:none;color:#428bca;background-color:#fff;border:1px solid #ddd;margin-left:-1px}.pagination>li:first-child>a,.pagination>li:first-child>span{margin-left:0;border-bottom-left-radius:4px;border-top-left-radius:4px}.pagination>li:last-child>a,.pagination>li:last-child>span{border-bottom-right-radius:4px;border-top-right-radius:4px}.pagination>li>a:hover,.pagination>li>span:hover,.pagination>li>a:focus,.pagination>li>span:focus{color:#2a6496;background-color:#eee;border-color:#ddd}.pagination>.active>a,.pagination>.active>span,.pagination>.active>a:hover,.pagination>.active>span:hover,.pagination>.active>a:focus,.pagination>.active>span:focus{z-index:2;color:#fff;background-color:#428bca;border-color:#428bca;cursor:default}.pagination>.disabled>span,.pagination>.disabled>span:hover,.pagination>.disabled>span:focus,.pagination>.disabled>a,.pagination>.disabled>a:hover,.pagination>.disabled>a:focus{color:#999;background-color:#fff;border-color:#ddd;cursor:not-allowed}.pagination-lg>li>a,.pagination-lg>li>span{padding:10px 16px;font-size:18px}.pagination-lg>li:first-child>a,.pagination-lg>li:first-child>span{border-bottom-left-radius:6px;border-top-left-radius:6px}.pagination-lg>li:last-child>a,.pagination-lg>li:last-child>span{border-bottom-right-radius:6px;border-top-right-radius:6px}.pagination-sm>li>a,.pagination-sm>li>span{padding:5px 10px;font-size:12px}.pagination-sm>li:first-child>a,.pagination-sm>li:first-child>span{border-bottom-left-radius:3px;border-top-left-radius:3px}.pagination-sm>li:last-child>a,.pagination-sm>li:last-child>span{border-bottom-right-radius:3px;border-top-right-radius:3px}
+</style>
+<div class="row">
+        <main role="main" class="ml-sm-auto col-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                    <li class="breadcrumb-item active cursor" aria-current="page" ui-sref="dashboard">Admin</li>
+                    <li class="breadcrumb-item" aria-current="page">Alunos</li>
+                </ol>
+            </nav>
+            <div class="content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-3 title-id text-left ">
+                        </div>
+                        <div class="col-9">
+                            <a ui-sref="aluno" class="btn btn-success btn-lg float-right"
+                                tooltip-placement="bottom-right" uib-tooltip="Cadastre um Novo Produto"><i class="fas fa-dolly-flatbed"></i></a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 col-12">
+                            <div class="card">
+                                <div class="card-header card-header-info">
+                                    <h4 class="card-title">Produtos</h4>
+                                    <p class="card-category">Aqui você visualiza os alunos disponíveis</p>
+                                </div>
+                                <div class="card-body">
+                                    <form class="forms-default">
+                                        <div class="row">
+                                            <div class="col-md-8 d-none d-md-block"></div>
+                                            <div class="col-md-4 col-12">
+                                                <div class="form-label-group">
+                                                    <input type="text" id="txtSearch" class="form-control" ng-model="searchText" autocomplete="off" placeholder="Nome" autofocus />
+                                                    <label for="txtSearch">Nome</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="card-body table-full-width table-responsive">
+                        <div class="col-12 text-center" style="margin-bottom:10px;">
+                            <ul class="pagination">
+                                <li>
+                                  <a class="active" href="javascript:void(0)" ng-click="abrir('')">TUDO</a>
+                                </li>
+                                <li ng-repeat="letter in pagLetter">
+                                    <a href="javascript:void(0)" ng-click="abrir(letter)">{{letter}}</a>
+                                </li>
+                              </ul>                                
+                        </div>
+                        <div class="col-12" ng-show="progressBarShow"><uib-progressbar class="progress-striped" value="valueExpand" type="success"><b>{{valueExpand}}%</b></uib-progressbar></div>
+                                      <table class="table table-hover table-striped">
+                                        <thead>
+                                            <th width="5%">#</th>
+                                            <th width="20%">CPF</th>
+                                            <th width="60%">Nome</th>
+                                            <th width="15%" class="text-center">Ações</th>
+                                        </thead>
+                                        <tbody>
+                                            <tr dir-paginate="aluno in tamanhoFiltrado  = (alunos | filter:{nome:searchText} | startsWithLetter:letterSelected | itemsPerPage:40)">                                               
+                                                <td ui-sref="aluno({aluno:aluno})" class="cursor">{{aluno.id}}</td>
+                                                <td ui-sref="aluno({aluno:aluno})" class="cursor">{{aluno.cpf}}</td>
+                                                <td ui-sref="aluno({aluno:aluno})" class="cursor">{{aluno.nome}}</td>
+                                                <td class="text-center">
+                                                    <a ui-sref="aluno({aluno:aluno})" class="btn btn-link btn-warning like"
+                                                    tooltip-placement="top" uib-tooltip="Visualizar Produtos"><i class="fas fa-dolly-flatbed"></i></a>
+                                                    <a href="javascript:void(0)" ng-click="excluirProduto(aluno)" class="btn btn-link btn-danger like"
+                                                    tooltip-placement="top" uib-tooltip="Excluir Produtos"><i class="fas fa-trash"></i></a>
+                                        </td>
+                                            </tr>
+                                            <tr class="animate-repeat" ng-if="tamanhoFiltrado.length === 0">
+                                                <td colspan="5" style="text-align:center;">Nenhum aluno foi encontrado.</td>
+                                              </tr>
+                                        </tbody>
+                                    </table>        
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 text-center">
+                            <dir-pagination-controls max-size="20" boundary-links="true"></dir-pagination-controls>
+                        </div>
+                    </div>
+    
+                </div>
+            </div>
+    </div>
+    </main>
+    </div>
